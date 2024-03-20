@@ -61,6 +61,7 @@ First, some syntax ;
 | *$(...)*         | Return the result of `...` command execution.                                       | `echo "r=$(uname)"`     | `r=Linux`                                              |
 | *<  \<file\>*    | Return content of file.                                                             | `echo < a.txt`          | `AAA`                                                  |
 | */dev/zero*      | Kernel special device file that provides an endless stream of null bytes when read. | `cat /dev/zero`         | no output (only `\00` so it's not printed in terminal) |
+
 Now that we are good with what each individual command does, we can now try to understand the malloc bomb and why it's a malloc bomb.
 
 When the `<...` try to read the `/dev/zero` content to return it to the `$(...)` statement, it need to first allocate memory before reading it.
