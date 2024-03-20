@@ -45,7 +45,7 @@ First the **while** loop.
 while true; do ... & done
 ```
 
-This is a simple infinite loop, but, the `& done` means that the loop is not waiting for the  function (content of `...`) to finish, instead, it simply end the loop (with the function still running in a background process) and repeat while `true` is ...true.
+This is a simple infinite loop, but, the `& done` means that the loop is not waiting for the function (content of `...`) to finish, instead, it simply end the loop (with the function still running in a background process) and repeat while `true` is ...true.
 
 Then the interesting part.
 
@@ -55,7 +55,7 @@ echo $(</dev/zero)
 
 First, some syntax ;
 
-| Name or function | Description                                                                         | Exemple                 | Exemple result                                         |
+| Name or function | Description                                                                         | Example                 | Example result                                         |
 | ---------------- | ----------------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------ |
 | *echo*           | Display content on terminal.                                                        | `echo "Hello world!!!"` | `Hello world!!!`                                       |
 | *$(...)*         | Return the result of `...` command execution.                                       | `echo "r=$(uname)"`     | `r=Linux`                                              |
