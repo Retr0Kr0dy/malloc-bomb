@@ -86,7 +86,7 @@ ulimit -u 10000 # Limit user created processes to 10,000
 
 Or,
 
-Removing read permission on `/dev/null` (not advisable). But, if something other than root needs `\00` to be returned, it **WILL** cause issues. It should be funny to see.
+Removing read permission on `/dev/zero` (not advisable). But, if something other than root needs `\00` to be returned, it **WILL** cause issues. It should be funny to see.
 
 > [!WARNING]
 This is a really bad fix, do this only if your dumb.
