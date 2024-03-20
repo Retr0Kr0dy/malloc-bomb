@@ -29,7 +29,7 @@ But what does it mean ?
 
 Linux load is calculated as the average number of processes in a runnable or uninterruptible state over a certain period of time.
 
-Creating an enormous malloc force the kernel to allocate all available memory, thus, causing a stall in the creation of any new tasks. ([see How ? for more explanation](#How))
+Creating an enormous malloc forces the kernel to allocate all available memory, thus, causing a stall in the creation of any new tasks. ([see How ? for more explanation](#How))
 
 # Why ?
 
