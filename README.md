@@ -4,18 +4,19 @@
 
 # Summary
 
-- [What is this ?](#What-is-this-?)
-- [Why ?](#Why)
-- [How ?](#How)
+- [What is this?](#What-is-this?)
+- [Why?](#Why?)
+- [How?](#How?)
 - [Remediation](#Remediation)
 - [Usecases](#Usecases)
-# What-is-this ?
 
-Do you remember `:(){ :|:& };:` forkbomb ?  funny indeed but  not as much as what we could do.
+# What-is-this?
+
+Do you remember `:(){ :|:& };:` forkbomb?  funny indeed but  not as much as what we could do.
 
 This forkbomb defines a shell function that recursively calls itself creating an exponential number of child processes until system resources are exhausted.
 
-What if we used the following malloc bomb instead.
+What if we used the following malloc bomb instead?
 
 ```sh
 while true; do echo $(</dev/zero) & done
@@ -31,13 +32,13 @@ Linux load is calculated as the average number of processes in a runnable or uni
 
 Creating an enormous malloc forces the kernel to allocate all available memory, thus, causing a stall in the creation of any new tasks. ([see How ? for more explanation](#How))
 
-# Why ?
+# Why?
 
 Cause it's way funnier like this.
 
-# How ?
+# How?
 
-This malloc bomb look simple, and it is.
+This malloc bomb looks simple, and it is.
 
 First the **while** loop.
 
@@ -45,7 +46,7 @@ First the **while** loop.
 while true; do ... & done
 ```
 
-This is a simple infinite loop, but, the `& done` means that the loop is not waiting for the function (content of `...`) to finish, instead, it simply end the loop (with the function still running in a background process) and repeat while `true` is ...true.
+This is a simple infinite loop, but, the `& done` means that the loop is not waiting for the function (content of `...`) to finish, instead, it simply ends the loop (with the function still running in a background process) and repeat while `true` is ...true.
 
 Then the interesting part.
 
@@ -64,11 +65,11 @@ First, some syntax ;
 
 Now that we are good with what each individual command does we can now try to understand the malloc bomb and why it's a malloc bomb.
 
-When the `<...` try to read the `/dev/zero` content to return it to the `$(...)` statement it first need to allocate memory before reading it.
+When the `<...` try to read the `/dev/zero` content to return it to the `$(...)` statement it first needs to allocate memory before reading it.
 
-When the kernel tries to allocate memory it come to a point where no more memory can be allocated, therefore, stalling any new process attempting to be created.
+When the kernel tries to allocate memory it comes to a point where no more memory can be allocated, therefore, stalling any new process attempting to be created.
 
-If your a player you can still kill the process that initiate the bomb, it will also stop every child process thus ending the denial of service. 
+If you are a player you can still kill the process that initiate the bomb, it will also stop every child process thus ending the denial of service. 
 
 > [!NOTE]
 Technical explanation could be either partially wrong or not fully accurate, if you want to rephrase and/or improve it, feel free to **PR**.
@@ -89,7 +90,7 @@ Or
 Removing read permission on `/dev/zero` (not advisable). But, if something other than root needs `\00` to be returned, it **WILL** cause issues. It should be funny to see.
 
 > [!WARNING]
-This is a really bad fix. Do this only if your dumb.
+This is a really bad fix. Do this only if you are dumb.
 
 # Usecases
 
@@ -97,7 +98,7 @@ This is a really bad fix. Do this only if your dumb.
 
 Just slap the command in the prompt no permission needed, no weird bin needed, only linux shell syntax abuse.
 
-#### Boot ?
+#### Boot?
 
 You could modify the init script of a system to execute this malloc bomb during the boot sequence, thus, stalling the system without easy/verbose debug axis (beside viewing diff in init script...) and never breaking a the same moment.
 
