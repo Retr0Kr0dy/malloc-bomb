@@ -104,3 +104,8 @@ You could modify the init script of a system to execute this malloc bomb during 
 
 ---
 *Discovered with fun by akpalanaza*
+
+##### References :
+
+- https://docs.kernel.org/admin-guide/cpu-load.html
+- https://docs.kernel.org/admin-guide/device-mapper/zero.html
